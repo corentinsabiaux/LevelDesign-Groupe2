@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9111448516840982007}
   - component: {fileID: 3964004809511006428}
   - component: {fileID: 5960543031571841875}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Cylinder (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -810,7 +810,7 @@ GameObject:
   - component: {fileID: 8611727247469290907}
   - component: {fileID: 3831654934352020367}
   - component: {fileID: 8071076530753209265}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1607,7 +1607,7 @@ GameObject:
   - component: {fileID: 8506178463741718854}
   - component: {fileID: 403782388514246098}
   - component: {fileID: 9171749031660186248}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Cylinder (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2404,7 +2404,7 @@ GameObject:
   - component: {fileID: 5878138457008280345}
   - component: {fileID: 631710959944115681}
   - component: {fileID: 2546383408968163088}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3197,7 +3197,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3032267862899527679}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Hive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3212,7 +3212,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6468997703537757721}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.02637, y: -5.6491804, z: -16.788094}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4160017794334892187}
@@ -3237,7 +3237,7 @@ GameObject:
   - component: {fileID: 2806581824980019541}
   - component: {fileID: 1839937659233239039}
   - component: {fileID: 5398764021478510991}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Cylinder (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4034,7 +4034,7 @@ GameObject:
   - component: {fileID: 1741301811459155016}
   - component: {fileID: 5555078136147286358}
   - component: {fileID: 3945041607043342027}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
