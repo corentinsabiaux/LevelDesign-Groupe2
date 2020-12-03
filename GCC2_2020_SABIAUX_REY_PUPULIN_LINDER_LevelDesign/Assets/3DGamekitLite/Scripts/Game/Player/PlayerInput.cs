@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using Gamekit3D;
+using UnityEngine.Events;
 
 
 public class PlayerInput : MonoBehaviour
@@ -10,6 +11,9 @@ public class PlayerInput : MonoBehaviour
     {
         get { return s_Instance; }
     }
+
+    public UnityEvent OnAimActivate;
+    public UnityEvent OnAimInactivate;
 
     protected static PlayerInput s_Instance;
 
@@ -20,6 +24,7 @@ public class PlayerInput : MonoBehaviour
     protected Vector2 m_Camera;
     protected bool m_Jump;
     protected bool m_Attack;
+    protected bool m_Aim;
     protected bool m_Pause;
     protected bool m_ExternalInputBlocked;
 
@@ -51,6 +56,11 @@ public class PlayerInput : MonoBehaviour
     public bool Attack
     {
         get { return m_Attack && !playerControllerInputBlocked && !m_ExternalInputBlocked; }
+    }
+
+    public bool Aim
+    {
+        get { return m_Aim && !playerControllerInputBlocked && !m_ExternalInputBlocked; }
     }
 
     public bool Pause
@@ -86,6 +96,14 @@ public class PlayerInput : MonoBehaviour
                 StopCoroutine(m_AttackWaitCoroutine);
 
             m_AttackWaitCoroutine = StartCoroutine(AttackWait());
+        }
+
+        bool tempAim = m_Aim;
+        m_Aim = Input.GetButton("Fire2");
+        if (m_Aim != tempAim)
+        {
+            if (m_Aim) OnAimActivate.Invoke();
+            else OnAimInactivate.Invoke();
         }
 
         m_Pause = Input.GetButtonDown ("Pause");

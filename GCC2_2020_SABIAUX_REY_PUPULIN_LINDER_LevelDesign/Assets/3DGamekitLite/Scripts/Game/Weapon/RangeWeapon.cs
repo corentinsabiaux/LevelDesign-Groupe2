@@ -9,6 +9,7 @@ namespace Gamekit3D
         public Vector3 muzzleOffset;
 
         public Projectile projectile;
+        public Projectile projectile2;
 
         public Projectile loadedProjectile
         {
@@ -22,6 +23,10 @@ namespace Gamekit3D
         {
             m_ProjectilePool = new ObjectPooler<Projectile>();
             m_ProjectilePool.Initialize(20, projectile);
+            if (Input.GetButton("Fire2"))
+            {
+                m_ProjectilePool.Initialize(20, projectile2);
+            }
         }
 
         public void Attack(Vector3 target)

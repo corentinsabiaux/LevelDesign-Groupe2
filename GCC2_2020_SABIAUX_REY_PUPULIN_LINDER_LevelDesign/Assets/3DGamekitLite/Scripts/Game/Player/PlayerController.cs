@@ -24,6 +24,7 @@ namespace Gamekit3D
 
         public CameraSettings cameraSettings;            // Reference used to determine the camera's direction.
         public MeleeWeapon meleeWeapon;                  // Reference used to (de)activate the staff when attacking. 
+        public RangeWeapon rangedWeapon;
         public RandomAudioPlayer footstepPlayer;         // Random Audio Players used for various situations.
         public RandomAudioPlayer hurtAudioPlayer;
         public RandomAudioPlayer landingPlayer;
@@ -58,6 +59,8 @@ namespace Gamekit3D
         protected Checkpoint m_CurrentCheckpoint;      // Reference used to reset Ellen to the correct position on respawn.
         protected bool m_Respawning;                   // Whether Ellen is currently respawning.
         protected float m_IdleTimer;                   // Used to count up to Ellen considering a random idle.
+
+        protected IKController m_Ik;
 
         // These constants are used to ensure Ellen moves and behaves properly.
         // It is advised you don't change them without fully understanding what they do in code.
@@ -145,6 +148,8 @@ namespace Gamekit3D
             m_Input = GetComponent<PlayerInput>();
             m_Animator = GetComponent<Animator>();
             m_CharCtrl = GetComponent<CharacterController>();
+            m_Ik = GetComponent<IKController>();
+
 
             meleeWeapon.SetOwner(gameObject);
 
@@ -162,6 +167,7 @@ namespace Gamekit3D
             m_Damageable.isInvulnerable = true;
 
             EquipMeleeWeapon(false);
+            rangedWeapon.gameObject.SetActive(false);
 
             m_Renderers = GetComponentsInChildren<Renderer>();
         }
@@ -469,7 +475,7 @@ namespace Gamekit3D
         // Called each physics step to count up to the point where Ellen considers a random idle.
         void TimeoutToIdle()
         {
-            bool inputDetected = IsMoveInput || m_Input.Attack || m_Input.JumpInput;
+            bool inputDetected = IsMoveInput || m_Input.Attack || m_Input.Aim || m_Input.JumpInput;
             if (m_IsGrounded && !inputDetected)
             {
                 m_IdleTimer += Time.deltaTime;
@@ -557,6 +563,18 @@ namespace Gamekit3D
             meleeWeapon.EndAttack();
             m_InAttack = false;
         }
+
+        public void RangedAttackShoot()
+        {
+            rangedWeapon.Attack(m_Ik.LookTarget);
+            m_InAttack = true;
+        }
+
+        public void RangedAttackEnd()
+        {
+            m_InAttack = false;
+        }
+
 
         // This is called by Checkpoints to make sure Ellen respawns correctly.
         public void SetCheckpoint(Checkpoint checkpoint)
@@ -677,6 +695,12 @@ namespace Gamekit3D
             m_VerticalSpeed = 0f;
             m_Respawning = true;
             m_Damageable.isInvulnerable = true;
+        }
+
+
+        public void ToggleAim(bool b)
+        {
+            m_Animator.SetBool("IsAiming", b);
         }
     }
 }

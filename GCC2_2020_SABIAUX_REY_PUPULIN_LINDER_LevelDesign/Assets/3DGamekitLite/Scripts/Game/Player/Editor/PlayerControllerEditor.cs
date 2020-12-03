@@ -20,6 +20,7 @@ namespace Gamekit3D
         SerializedProperty m_CanAttackProp;
 
         SerializedProperty m_MeleeWeaponProp;
+        SerializedProperty m_RangedWeaponProp;
         SerializedProperty m_CameraSettingsProp;
         SerializedProperty m_FootstepPlayerProp;
         SerializedProperty m_HurtAudioPlayerProp;
@@ -39,6 +40,7 @@ namespace Gamekit3D
         GUIContent m_CanAttackContent = new GUIContent("Can Attack", "Whether or not Ellen can attack with her staff.  This can be set externally.");
 
         GUIContent m_MeleeWeaponContent = new GUIContent("Melee Weapon", "Used for damaging enemies when Ellen swings her staff.");
+        GUIContent m_RangedWeaponContent = new GUIContent("Ranged Weapon", "Used for damaging enemies when Ellen used her pistol.");
         GUIContent m_CameraSettingsContent = new GUIContent("Camera Settings", "Used to get the rotation of the current camera so that Ellen faces the correct direction.  Note: This is the only reference which is not part of the Ellen prefab.  It should automatically be set to the Camera Settings script of the CameraRig gameobject when the Prefab is instantiated.");
         GUIContent m_FootstepPlayerContent = new GUIContent("Footstep Random Audio Player", "Used to play a random sound when Ellen takes a step.");
         GUIContent m_HurtAudioPlayerContent = new GUIContent("Hurt Random Audio Player", "Used to play a random sound when Ellen gets hurt.");
@@ -61,6 +63,7 @@ namespace Gamekit3D
             m_CanAttackProp = serializedObject.FindProperty("canAttack");
 
             m_MeleeWeaponProp = serializedObject.FindProperty("meleeWeapon");
+            m_RangedWeaponProp = serializedObject.FindProperty("rangedWeapon");
             m_CameraSettingsProp = serializedObject.FindProperty("cameraSettings");
             m_FootstepPlayerProp = serializedObject.FindProperty("footstepPlayer");
             m_HurtAudioPlayerProp = serializedObject.FindProperty("hurtAudioPlayer");
@@ -96,6 +99,7 @@ namespace Gamekit3D
             {
                 EditorGUI.indentLevel++;
                 EditorGUILayout.PropertyField(m_MeleeWeaponProp, m_MeleeWeaponContent);
+                EditorGUILayout.PropertyField(m_RangedWeaponProp, m_RangedWeaponContent);
                 EditorGUILayout.PropertyField(m_CameraSettingsProp, m_CameraSettingsContent);
                 EditorGUILayout.PropertyField(m_FootstepPlayerProp, m_FootstepPlayerContent);
                 EditorGUILayout.PropertyField(m_HurtAudioPlayerProp, m_HurtAudioPlayerContent);
